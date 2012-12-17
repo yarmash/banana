@@ -1,0 +1,17 @@
+Content-Type: text/plain; charset=utf-8
+To: [%= user.full_name =%] <[% user.email %]>
+From: [%= from +%]
+Subject: Registration on foodadvisor.ru
+
+Welcome to foodadvisor.ru!
+
+Your account details:
+
+Name:  [%= user.full_name +%]
+Login: [%= user.login +%]
+Email: [%= user.email %]
+
+[% IF code +%]
+
+Please visit the link below to confirm the email: http://foodadvisor.ru/registration/confirm/[% code %]
+[% END %]

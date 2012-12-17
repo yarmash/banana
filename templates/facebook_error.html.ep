@@ -1,0 +1,9 @@
+% layout 'default';
+% title 'Something is wrong';
+
+% if ($self->param('error') && $self->param('error') eq 'access_denied') {
+      You need to authorize the application to proceed. <a href="/registration/facebook">Try again</a>.
+% }
+% else {
+      Error authorizing with Facebook.
+% }

@@ -1,0 +1,18 @@
+% layout 'default';
+% title 'Bananaduck';
+
+<ul>
+% if ($self->is_user_authenticated) {
+    <li style="list-style-type:none;margin:0;padding:0;"><a href="/users">Users</a></li>
+%       if ($self->current_user->fb_connection) {
+    <li style="list-style-type:none;margin:0;padding:0;"><a href="/facebook/disconnect">Disconnect from Facebook</a></li>
+%       }
+%       else {
+    <li style="list-style-type:none;margin:0;padding:0;"><a href="/facebook/connect">Connect to Facebook</a></li>
+%       }
+% }
+% else {
+    <li style="list-style-type:none;margin:0;padding:0;"><a href="/registration">Registration</a></li>
+    <li style="list-style-type:none;margin:0;padding:0;"><a href="/login">Login</a></li>
+% }
+</ul>

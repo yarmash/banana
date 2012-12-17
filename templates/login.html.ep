@@ -1,0 +1,43 @@
+% layout 'default';
+% title 'Login';
+
+% if ($self->is_user_authenticated) {
+    <p> You're already logged in as user <b><%= $self->current_user->login %></b>.
+% }
+% else {
+    % if ($form->is_submitted) {
+        % if (!$form->validate) {
+            Form validation errors:
+            <ul>
+            % for my $field (@{ $form->fields }) {
+            %    if (!$field->{is_valid}) {
+                    <li><%= "$field->{label}: $field->{reason}" %></li>
+            %    }
+            % }
+            %
+            </ul>
+        % }
+        % else {
+            Invalid username or password
+        % }
+    % }
+    <form id="login" method="post" action="/login">
+        <input type="hidden" name="_submitted" value="1">
+        <input type="hidden" name="url" value="<%= $self->param("url") %>">
+        <table>
+        % for my $field (@{ $form->fields }) {
+            <tr>
+                <td><label for="<%= $field->{name} %>"><%= "$field->{label}:" . ( $field->{required} ? "*" : "" ) %></label></td>
+                <td><%= include 'form_field', form => $form, field => $field %><span style="color:red"></span></td>
+            </tr>
+        % }
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+% }
+
+
+

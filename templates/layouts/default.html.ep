@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link type="text/css" rel="stylesheet" href="/css/redmond/jquery-ui-1.8.18.custom.css">
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/jquery.validate.js"></script>
+        <script type="text/javascript" src="/js/jquery-ui-1.8.18.custom.min.js"></script>
+    </head>
+    <body>
+        <div id="header">
+            % if ($self->is_user_authenticated) {
+            <small><b><%= $self->current_user->login %></b>&nbsp;&nbsp;<a href="/logout">Logout</a></small>
+            % }
+        </div>
+        <div id="content">
+            <%= content %>
+        </div>
+    </body>
+</html>

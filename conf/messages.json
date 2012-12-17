@@ -1,0 +1,52 @@
+{
+    "messages": {
+        "exception.invalidRequest.unknownParameter": {
+            "ru": "Неверный параметр: \"%s\"",
+            "en": "Unknown parameter: \"%s\""
+        },
+        "exception.invalidRequest.invalidParameterValue": {
+            "ru": "Неверное значение параметра \"%s\": \"%s\"",
+            "en": "Error validating the parameter \"%s\": \"%s\""
+        },
+        "exception.invalidRequest.missingParameter": {
+            "ru": "Отсутствует обязательный параметр: \"%s\"",
+            "en": "Missing required parameter: \"%s\""
+        },
+        "exception.invalidUsage.notOwner": {
+            "ru": "Объект не принадлежит пользователю",
+            "en": "The user is not the owner of the object"
+        },
+        "exception.invalidUsage.hasRelatedObjects": {
+            "ru": "Существуют связанные объекты",
+            "en": "There are related objects"
+        },
+        "exception.invalidUsage.notFound": {
+            "ru": "Объект не найден",
+            "en": "Object not found"
+        },
+        "exception.invalidUsage.authenticationFailure": {
+            "ru": "Ошибка аутентификации",
+            "en": "Authentication failure"
+        },
+        "validation.invalidFormat": {
+            "ru": "Неверный формат",
+            "en": "Invalid format"
+        },
+        "validation.valueNotInSet": {
+            "ru": "Допустимые значения: %s",
+            "en": "Acceptable values: %s"
+        },
+        "validation.passwordTooShort": {
+            "ru": "Пароль должен быть не менее %d символов",
+            "en": "Password should be at least %d characters"
+        },
+        "validation.loginInUse": {
+            "ru": "Логин занят",
+            "en": "Login already in use"
+        },
+        "validation.emailInUse": {
+            "ru": "Email занят",
+            "en": "Email already in use"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+% layout 'default';
+% title 'Users';
+
+<h3>Users list:</h3>
+
+<table border="1">
+    <tr>
+        <th>Id:</th>
+        <th>Login:</th>
+        <th>Name:</th>
+        <th>Email:</th>
+        <th>Is email confirmed:</th>
+        <th>Connected to Facebook:</th>
+        <th>Created:</th>
+        <th>Avatar:</th>
+    </tr>
+% for my $user (@$users) {
+    <tr>
+        <td><%= $user->id %></td>
+        <td><%= $user->login %></td>
+        <td><%= $user->full_name %></td>
+        <td><%= $user->email %></td>
+        <td><%= $user->is_email_confirmed ? "yes" : "no" %></td>
+        <td><%= $user->fb_connection ? "yes" : "no" %></td>
+        <td><%= $user->created %></td>
+        <td>
+% if ($user->avatar) {
+    <img src="<%= $user->avatar %>" height="45" width="45">
+% }
+        </td>
+    </tr>
+% }
+</table>

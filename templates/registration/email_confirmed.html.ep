@@ -1,0 +1,4 @@
+% layout 'default';
+% title 'Email confirmed';
+
+<p>Hello, <%= $user->full_name %>! You have successfully confirmed the email <b><%= $user->email %></b>.

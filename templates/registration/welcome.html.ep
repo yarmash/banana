@@ -1,0 +1,30 @@
+% layout 'default';
+% title 'Registration successfull';
+
+% if ($self->flash('exists')) {
+<p>This Facebook user is already registered with Bananaduck.
+% }
+% else {
+
+<p>The new account was created with the following details:
+
+<table>
+    <tr>
+        <td>Name:</td>
+        <td><%= $user->full_name %></td>
+    </tr>
+    <tr>
+        <td>Login:</td>
+        <td><%= $user->login %></td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td><%= $user->email %></td>
+    </tr>
+</table>
+
+% }
+
+% if (!$user->is_email_confirmed) {
+<p>Your account needs to be activated before use. Check your email for further instructions.
+% }

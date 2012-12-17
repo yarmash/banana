@@ -1,0 +1,16 @@
+% if ($field->{type} eq "text") {
+    <input style="width: 250px;" class="text ui-widget-content ui-corner-all" type="text" id="<%= $field->{name} %>" name="<%= $field->{name} %>"<%
+        if ($form->is_submitted) { %> value="<%= $field->{value} %>"<% } %>>
+% }
+% elsif ($field->{type} eq "select") {
+    <select style="width: 250px;" class="ui-widget-content ui-corner-all" id="<%= $field->{name} %>" name="<%= $field->{name} %>">
+    % for my $option (@{ $field->{options} }) {
+        <option value="<%= $option->[0] %>"<%
+            if ($form->is_submitted && $option->[0] eq $field->{value}) { %> selected="selected"<% } %>><%= $option->[1] %></option>
+    % }
+    </select>
+% }
+% elsif ($field->{type} eq "password") {
+    <input style="width: 250px;" class="text ui-widget-content ui-corner-all" type="password" id="<%= $field->{name} %>" name="<%= $field->{name} %>"<%
+        if ($form->is_submitted) { %> value="<%= $field->{value} %>"<% } %>>
+% }

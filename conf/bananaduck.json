@@ -1,0 +1,36 @@
+{
+    "storage": {
+        "dsn": "dbi:Pg:dbname=bananaduck",
+        "user": "",
+        "password": "",
+
+        "options": {
+            "pg_enable_utf8": 1,
+            "AutoCommit": 1,
+            "RaiseError": 1,
+            "quote_char": "\"",
+            "name_sep": "."
+        }
+    },
+    "session": {
+        "default_expiration": 86400,
+        "cookie_name": "duck"
+    },
+    "mail": {
+        "relay": "",
+        "from": ""
+    },
+    "facebook": {
+        "app_id": "",
+        "app_secret": ""
+    },
+    "twitter": {
+        "consumer_key": "",
+        "consumer_secret": ""
+    },
+    "api": {
+        "paging": {
+            "rows_per_page": 20
+        }
+    }
+}

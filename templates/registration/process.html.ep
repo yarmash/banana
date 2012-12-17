@@ -1,0 +1,125 @@
+% layout 'default';
+% title 'Registration';
+
+<script type="text/javascript">
+$(function() {
+    $("#reg-form").validate({
+        rules: {
+            login: {
+                required: true,
+                minlength: 2,
+                remote: "/registration/check-login"
+            },
+            password: {
+                required: true,
+                minlength: 8
+            },
+            full_name: "required",
+            email: {
+                required: true,
+                email: true,
+                remote: "/registration/check-email"
+            },
+            birthday: {
+                dateISO: true
+            }
+        },
+        messages: {
+            login: {
+                remote: $.format("'{0}' is already in use")
+            },
+            email: {
+                remote: $.format("'{0}' is already in use")
+            }
+        },
+        errorPlacement: function(error, element) {
+            error.appendTo( element.next() );
+        }
+    });
+
+    $("#twitter-form").validate({
+        rules: {
+            "twitter-email": {
+                required: true,
+                email: true,
+                remote: { url: "/registration/check-email", data: { email: function() { return $("#twitter-email").val() } } }
+            }
+        },
+        messages: {
+            "twitter-email": {
+                remote: $.format("'{0}' is already in use")
+            }
+        },
+        errorPlacement: function(error, element) {
+            error.appendTo( element.next() );
+        }
+    });
+
+    $( "#twitter-dialog" ).dialog({
+        autoOpen: false,
+        height: 249,
+        width: 415,
+        modal: true,
+        buttons: {
+            Register: function() {
+                $("#twitter-form").submit();
+            },
+            Cancel: function() {
+                $(this).dialog("close");
+            }
+        },
+        close: function() {}
+    });
+
+    $( "#twitter-link" ).click(function() {
+        $( "#twitter-dialog" ).dialog("open");
+    });
+});
+</script>
+
+<div>
+    <h3>Registration</h3>
+</div>
+<div>
+    <a style="font-weight: bold" href="/registration/facebook">Facebook</a>&nbsp;
+    <a style="font-weight: bold" id="twitter-link" href="#">Twitter</a>
+</div>
+<br>
+<div id="twitter-dialog" title="Register using your Twitter account">
+    <p>Darn Twitter won't tell us your email.</p>
+
+    <form id="twitter-form" method="get" action="/registration/twitter">
+    <fieldset>
+        <label for="email">Email</label>
+        <input style="width: 250px;" type="text" name="twitter-email" id="twitter-email" value="" class="text ui-widget-content ui-corner-all"><span style="color:red"></span>
+    </fieldset>
+    </form>
+</div>
+
+% if ($form->is_submitted && !$form->validate) {
+    Form validation errors:
+    <ul>
+    % for my $field (@{ $form->fields }) {
+    %    if (!$field->{is_valid}) {
+            <li><%= "$field->{label}: $field->{reason}" %></li>
+    %    }
+    % }
+    %
+    </ul>
+% }
+
+<form id="reg-form" method="post" action="/registration">
+    <input type="hidden" name="_submitted" value="1">
+    <table>
+    % for my $field (@{ $form->fields }) {
+        <tr>
+            <td><label for="<%= $field->{name} %>"><%= "$field->{label}:" . ( $field->{required} ? "*" : "" ) %></label></td>
+            <td><%= include 'form_field', form => $form, field => $field %><span style="color:red"></span></td>
+        </tr>
+    % }
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit"></td>
+        </tr>
+    </table>
+</form>
